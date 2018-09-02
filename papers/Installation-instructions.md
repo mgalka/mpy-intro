@@ -10,6 +10,7 @@ Jeśli istnieje możliwość instalacji programu w wersji 32-bit lub 64-bit nale
 1. Ściągnij program PuTTy ze strony:
 
 https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe (wersja 64-bit)
+
 https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe (wersja 32-bit)
 
 2. Skopiuj program do znanej lokalizacji. 
@@ -37,3 +38,10 @@ _Program nie wymaga instalacji, uruchamia się go poprzez podwójne kliknięcie 
         - Kliknij przycisk _Save_
 
     ![](img/installation-instructions/03-putty_config_save.png)
+
+## Instalacja narzędzia ampy
+1. Otwórz wiersz poleceń systemu Windows.
+2. Zainstaluj pakiet `adafruit-ampy` przy pomocy narzędzia `pip`
+```
+python -m pip install adafruit-ampy
+```

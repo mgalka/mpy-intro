@@ -1,4 +1,4 @@
-## Instrukcja zestawu deweloperskiego Witty Mini
+## Instrukcja uruchomienia MicroPython dla zestawu deweloperskiego Witty Mini
 
 ## Wymagania
 Do przygotowania płytki deweloperskiej Witty Mini do pracy pod kontrolą MicroPython potrzebne są następujące komponenty sprzętowe i programowe.
@@ -98,8 +98,6 @@ positional arguments:
 ![](img/flashing-instructions/03-windows_serial_port.png)
 
 
-
-
 ## Wgranie firmware'u MicroPython na zestaw deweloperski Witty Mini
 
 1. Ściągnij esptool.py.
@@ -107,9 +105,30 @@ positional arguments:
 3. Uruchom zestaw deweloperski w trybie bootloadera.
 4. Usuń bieżącą zawartość pamięci flash mikrokontrolera ESP8266
 
-```bash
+```
 esptool.py --port <port_szeregowy> erase_flash
 ```
-_W miejscu <port_szeregowy> należy wstawić nazwę/ścieżkę portu szeregowego do którego podłączona jest płytka Witty Mini odpowiednią dla używanego systemu operacyjnego_
 
+5. Wgraj na płytkę uprzednio ściągnięty obraz firmware'u MicroPython
 
+```
+esptool.py --port <port_szeregowy> --baud 115200 write_flash --flash_size=detect -fm dio 0 <ścieżka_do_ściągniętego_obrazu>
+```
+
+**_W miejsce <port_szeregowy> należy wstawić nazwę/ścieżkę portu szeregowego do którego podłączona jest płytka Witty Mini odpowiednią dla używanego systemu operacyjnego_**
+
+**_W miejsce <ścieżka_do_ściągniętego_obrazu> należy wstawić pełną ścieżkę do uprzednio ściągniętego obrazu firmware'u MicroPython_**
+
+6. Uruchom terminal szeregowy.
+    - Ustaw szybkość połączenia na 115200 kbps.
+    - Ustaw odpowiednią nazwę/ścieżkę portu szeregowego w swoim systemie
+
+7. Wciśnij przycisk `rst` na płytce pomocniczej
+
+8. Jeśli instalacj przebiegła prawidłowa na terminalu powinna pojawić się linia poleceń interpretera MicroPython
+
+```
+MicroPython v1.9.4-8-ga9a3caad0 on 2018-05-11; ESP module with ESP8266
+Type "help()" for more information.
+>>>
+```
