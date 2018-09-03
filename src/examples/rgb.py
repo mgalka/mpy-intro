@@ -17,7 +17,7 @@ def demo():
         pin.on()
         time.sleep(1)
         pin.off()
-        time.sleep(0)
+        time.sleep(1)
 
 
 if __name__ == '__main__':
