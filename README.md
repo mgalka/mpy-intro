@@ -1,2 +1,2 @@
 # mpy-intro
-MicroPython Introtuduction training
+A "MicroPython Introduction" training.
