@@ -39,9 +39,64 @@ _Program nie wymaga instalacji, uruchamia się go poprzez podwójne kliknięcie 
 
     ![](img/installation-instructions/03-putty_config_save.png)
 
-## Instalacja narzędzia ampy
+### Instalacja narzędzia ampy
 1. Otwórz wiersz poleceń systemu Windows.
 2. Zainstaluj pakiet `adafruit-ampy` przy pomocy narzędzia `pip`
 ```
 python -m pip install adafruit-ampy
 ```
+
+## Mac
+Instrukcja instalacji została opracowana na systemie operacyjnym macOS 10.13 (High Sierra).
+
+### Wymagania wstępne
+
+- Komputer Mac z systemem macOS 10.13 High Sierra.
+- Zainstalowany manager pakietów Homebrew (https://brew.sh/)
+
+### Instalacja sterowników układu Winchip CH340
+
+Układ Winchip CH340 jest opdowiedzialny za konwersję TTL->USB, czyli odpowiada za możliwość podłączenia wyprowadzenia portu szeregowego płytki deweloperskiej do portu USB komputera.
+
+1. Usuń poprzednie wersje sterownika:
+    - Uruchom terminal i wykonaj następujące komendy
+    - **Uwaga: Komendy wykonywane są z uprawnieniami administratora systemu, należy zachować uważność.**
+    ```
+    sudo su
+    rm -rf /System/Library/Extensions/usbserial.kext
+    rm -rf /Library/Extensions/usbserial.kext
+    ```
+
+2. Ściągnij archiwum `zip` ze sterownikiem ze strony:
+
+    https://blog.sengotta.net/signed-mac-os-driver-for-winchiphead-ch340-serial-bridge/
+
+![](img/installation-instructions/mac/01-ch340_drivers_download.png)
+
+3. Rozpakuj zawartość archiwum.
+4. Zainstaluj sterownik z pakietu `CH34x_Install_V1.4.pkg`.
+    - Konieczne będą uprawnienia administratora na komputerze.
+5. Zresetuj komputer.
+
+### Instalacja terminala szeregowego
+
+1. Otwórz terminal.
+2. Zainstaluj program `picocom` przy pomocy managera pakietów `Homebrew`:
+
+    ```
+    brew install picocom
+    ```
+
+## Instalacja narzędzia ampy
+1. Otwórz terminal.
+2. Zainstaluj pakiet `adafruit-ampy` przy pomocy narzędzia `pip`:
+    ```
+    python -m pip install adafruit-ampy
+    ```
+
+    lub
+
+    ```
+    python3 -m pip install adafruit-ampy
+    ```
+
