@@ -41,7 +41,8 @@ _Program nie wymaga instalacji, uruchamia się go poprzez podwójne kliknięcie 
 
 ### Instalacja narzędzia ampy
 1. Otwórz wiersz poleceń systemu Windows.
-2. Zainstaluj pakiet `adafruit-ampy` przy pomocy narzędzia `pip`
+2. Zainstaluj pakiet `adafruit-ampy` przy pomocy narzędzia `pip`:
+
 ```
 python -m pip install adafruit-ampy
 ```
@@ -60,7 +61,7 @@ Układ Winchip CH340 jest opdowiedzialny za konwersję TTL->USB, czyli odpowiada
 
 1. Usuń poprzednie wersje sterownika:
     - Uruchom terminal i wykonaj następujące komendy
-    - **Uwaga: Komendy wykonywane są z uprawnieniami administratora systemu, należy zachować uważność.**
+    - **Uwaga: Komendy wykonywane są z uprawnieniami administratora systemu, należy zachować ostrożność.**
     ```
     sudo su
     rm -rf /System/Library/Extensions/usbserial.kext
@@ -90,6 +91,7 @@ Układ Winchip CH340 jest opdowiedzialny za konwersję TTL->USB, czyli odpowiada
 ## Instalacja narzędzia ampy
 1. Otwórz terminal.
 2. Zainstaluj pakiet `adafruit-ampy` przy pomocy narzędzia `pip`:
+
     ```
     python -m pip install adafruit-ampy
     ```
@@ -99,4 +101,6 @@ Układ Winchip CH340 jest opdowiedzialny za konwersję TTL->USB, czyli odpowiada
     ```
     python3 -m pip install adafruit-ampy
     ```
+
+
 
