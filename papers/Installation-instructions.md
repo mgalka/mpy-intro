@@ -5,9 +5,27 @@
 Jeśli istnieje możliwość instalacji programu w wersji 32-bit lub 64-bit należy wybrać odpowiednią dla swojego systemu operacyjnego.
 
 ## Windows
+
+## Instalacja interpretera Python
+
+Do uruchomienia narzędzi konieczny jest interpreter języka Python w wersji 2.7 lub 3.x. W przypadku kiedy interpreter Python jest już zainstalowany tę sekcję można pominąć.
+
+1. Pobierz instalator języka Python ze strony:
+
+https://www.python.org/ftp/python/3.7.0/python-3.7.0.exe (wersja 32-bit)
+
+https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe (wersja 64-bit)
+
+2. Zainstaluj interpreter języka Python przy pomocy pobranego instalatora. 
+
+**Należy upewnić się, aby podczas instalacji włączyć opcję  „Add Python 3.7 to PATH”.**
+
+![](img/installation-instructions/windows/04-python_installer_path.png)
+
+
 ### Instalacja terminala szeregowego.
 
-1. Ściągnij program PuTTy ze strony:
+1. Pobierz program PuTTy ze strony:
 
 https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe (wersja 64-bit)
 
@@ -43,9 +61,37 @@ _Program nie wymaga instalacji, uruchamia się go poprzez podwójne kliknięcie 
 1. Otwórz wiersz poleceń systemu Windows.
 2. Zainstaluj pakiet `adafruit-ampy` przy pomocy narzędzia `pip`:
 
-```
-python -m pip install adafruit-ampy
-```
+    ```
+    python -m pip install adafruit-ampy
+    ```
+
+### Pobranie narzędzi WebREPL
+
+Narzędzia WebREPL można pobrać w formie repozytorium git, lub za pomocą strony GitHub. Należy wybrać jedną z metod.
+
+#### Pobranie przy pomocy git
+
+1. Uruchom linię poleceń `git`
+2. Pobierz repozytorium przy pomocy komendy:
+
+    ```
+    git clone https://github.com/micropython/webrepl.git
+    ```
+
+#### Pobranie z GitHub
+
+1. Wejdź przy pomocy przeglądarki na stronę repozytorium WebREPL:
+
+    https://github.com/micropython/webrepl
+
+2. Pobierz narzędzie w formie archiwum `zip`.
+    - Kliknij na przycisku `Clone or download`.
+    - Wybierz opcję Download ZIP.
+
+    ![](img/installation-instructions/common/02-webrepl_download_zip.png)
+
+3. Rozpakuj pobrane archiwum w znanej lokalizacji na dysku.
+
 
 ## Mac
 Instrukcja instalacji została opracowana na systemie operacyjnym macOS 10.13 (High Sierra).
@@ -54,6 +100,15 @@ Instrukcja instalacji została opracowana na systemie operacyjnym macOS 10.13 (H
 
 - Komputer Mac z systemem macOS 10.13 High Sierra.
 - Zainstalowany manager pakietów Homebrew (https://brew.sh/)
+
+### Instalacja interpretera Python
+
+1. Otwórz aplikację `Terminal`.
+2. Zainstaluj interpreter języka Python przy pomocy komendy:
+
+    ```
+    brew install python3
+    ```
 
 ### Instalacja sterowników układu Winchip CH340
 
@@ -68,7 +123,7 @@ Układ Winchip CH340 jest opdowiedzialny za konwersję TTL->USB, czyli odpowiada
     rm -rf /Library/Extensions/usbserial.kext
     ```
 
-2. Ściągnij archiwum `zip` ze sterownikiem ze strony:
+2. Pobierz archiwum `zip` ze sterownikiem ze strony:
 
     https://blog.sengotta.net/signed-mac-os-driver-for-winchiphead-ch340-serial-bridge/
 
@@ -81,7 +136,7 @@ Układ Winchip CH340 jest opdowiedzialny za konwersję TTL->USB, czyli odpowiada
 
 ### Instalacja terminala szeregowego
 
-1. Otwórz terminal.
+1. Uruchom terminal.
 2. Zainstaluj program `picocom` przy pomocy managera pakietów `Homebrew`:
 
     ```
@@ -102,5 +157,75 @@ Układ Winchip CH340 jest opdowiedzialny za konwersję TTL->USB, czyli odpowiada
     python3 -m pip install adafruit-ampy
     ```
 
+### Pobranie narzędzi WebREPL
 
+Narzędzia WebREPL można pobrać w formie repozytorium git, lub za pomocą strony GitHub. Należy wybrać jedną z metod.
 
+#### Pobranie przy pomocy git
+
+1. Otwórz terminal.
+2. Pobierz repozytorium przy pomocy komendy:
+
+    ```
+    git clone https://github.com/micropython/webrepl.git
+    ```
+
+#### Pobranie z GitHub
+
+1. Wejdź przy pomocy przeglądarki na stronę repozytorium WebREPL:
+
+    https://github.com/micropython/webrepl
+
+2. Pobierz narzędzie w formie archiwum `zip`.
+    - Kliknij na przycisku `Clone or download`.
+    - Wybierz opcję Download ZIP.
+
+![](img/installation-instructions/common/02-webrepl_download_zip.png)
+
+3. Rozpakuj pobrane archiwum w znanej lokalizacji na dysku.
+
+## Ubuntu
+
+### Instalacja interpretera Python, terminala szeregowego oraz narzędzi git
+
+1. Otwórz terminal.
+2. Wydaj następujące komendy instalacyjne:
+
+```
+sudo apt install python3 python3-pip picocom git
+```
+
+## Instalacja narzędzia ampy
+1. Otwórz terminal.
+2. Zainstaluj pakiet `adafruit-ampy` przy pomocy narzędzia `pip`:
+
+    ```
+    python3 -m pip install adafruit-ampy
+    ```
+
+### Pobranie narzędzi WebREPL
+
+Narzędzia WebREPL można pobrać w formie repozytorium git, lub za pomocą strony GitHub. Należy wybrać jedną z metod.
+
+#### Pobranie przy pomocy git
+
+1. Uruchom terminal.
+2. Pobierz repozytorium przy pomocy komendy:
+
+    ```
+    git clone https://github.com/micropython/webrepl.git
+    ```
+
+#### Pobranie z GitHub
+
+1. Wejdź przy pomocy przeglądarki na stronę repozytorium WebREPL:
+
+    https://github.com/micropython/webrepl
+
+2. Pobierz narzędzie w formie archiwum `zip`.
+    - Kliknij na przycisku `Clone or download`.
+    - Wybierz opcję Download ZIP.
+
+![](img/installation-instructions/common/02-webrepl_download_zip.png)
+
+3. Rozpakuj pobrane archiwum w znanej lokalizacji na dysku.
