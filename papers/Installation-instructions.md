@@ -21,7 +21,7 @@ _Program nie wymaga instalacji, uruchamia się go poprzez podwójne kliknięcie 
     - Ustaw szybkość połączenia na _115200 kbps_.
     - Ustaw typ połączenia na _Serial_.
 
-    ![](img/installation-instructions/01-putty_config_serial.png)
+    ![](img/installation-instructions/windows/01-putty_config_serial.png)
 
     - Wybierz kategorię _Connection>Serial_ z drzewa po lewej stronie okna.
     - Ustaw parametry połączenia szeregowego:
@@ -31,13 +31,13 @@ _Program nie wymaga instalacji, uruchamia się go poprzez podwójne kliknięcie 
         - Parity: None
         - Flow control: None
 
-    ![](img/installation-instructions/02-putty_config_serial_params.png)
+    ![](img/installation-instructions/windows/02-putty_config_serial_params.png)
 
     - Zapisz sesję jako _Micropython_
         - Wpisz nazwę sesji - _Micropython_ w pole tekstowe
         - Kliknij przycisk _Save_
 
-    ![](img/installation-instructions/03-putty_config_save.png)
+    ![](img/installation-instructions/windows/03-putty_config_save.png)
 
 ### Instalacja narzędzia ampy
 1. Otwórz wiersz poleceń systemu Windows.
