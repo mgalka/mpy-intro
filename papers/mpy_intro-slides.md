@@ -197,3 +197,73 @@ Changes will be activated after reboot
 Would you like to reboot now? (y/n) y
 >>>
 ```
+
+# GPIO
+
+## GPIO
+
+- GPIO - general-purpose input/output. 
+- Pin interfejsu do komunikacji między elementami systemu komputerowego.
+- Może pracować jako wejście lub wyjście.
+    - Często jest to właściwość konfigurowalna.
+
+## GPIO
+- Piny GPIO bywają grupowane w porty.
+- Często są wyprowadzane w formie wtyczek lub gniazd na płytkach deweloperskich.
+- Każdy pin cyfrowy może znajdować się w stanie **wysokim (1)** lub **niskim (0)**.
+
+## GPIO OUTPUT
+- Dla pinów wyjściowych mamy możliwość ustawienia ich stanu z poziomu programu.
+- MicroPython posiada odpowiednie funkcje w module `machine`.
+    - Każdy pin posiada swój numer.
+    - Operacje na pinach zaimplementowane są w klasie `machine.Pin`
+    - Konstruktor wymaga podania numeru pina i trybu jego pracy.
+
+
+## GPIO OUTPUT
+```python
+RED_PIN = 15
+red = machine.Pin(RED_PIN, machine.Pin.OUT)
+red.on()
+red.off()
+
+red.value(1)
+red.value(0)
+```
+
+## machine.Signal
+
+- W niektórych przypadkach sygnały na pinach mogą dawać odwrotne efekty.
+    - Stan niski włącza urządzenie.
+    - Stan wysoki wyłącza urządzenie.
+- klasa `machine.Signal` dodaje warstwę abstrakcji dla stanu pinów.
+    - Daje możliwość odzwierciedlenia stanu urządzenia, a nie pinu.
+
+## machine.Signal
+
+```python
+from machine import Pin, Signal
+
+RED_RGB_PIN = 15 # active-high
+BLUE_PIN = 2 # active-low
+
+red_pin = Pin(RED_RGB_PIN, Pin.OUT)
+blue_pin = Pin(BLUE_PIN, Pin.OUT)
+red = Signal(red_pin, invert=False)
+blue = Signal(blue_pin, invert=True)
+
+red.value(1)
+blue.value(1)
+
+red.on()
+blue.on()
+```
+
+## GPIO INPUT
+- W trybie wejściowym stan pinu jest ustawiany przez urządzenie zewnętrzne.
+- Z poziomu programu odczytujemy stan pinu.
+
+
+
+
+
