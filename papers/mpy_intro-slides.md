@@ -169,3 +169,31 @@ import network
 station = network.WLAN(network.STA_IF)
 print(station.ifconfig())
 ```
+
+## WebREPL
+- Pozwala na dostęp do REPL przez WiFi.
+- Daje możliwość pobierania i ładowania plików na urządzenie.
+- Wymagania:
+    - Urządzenie skonfigurowane i podłączone do sieci WiFi.
+    - WebREPL włączony na urządzeniu.
+    - Pobrany zestaw narzędzi WebREPL.
+
+## Uruchomienie WebREPL
+
+- Połączenie z REPL przez port szeregowy.
+- Uruchomienie następujących komend:
+
+```python
+>>> import webrepl_setup
+WebREPL daemon auto-start status: disabled
+
+Would you like to (E)nable or (D)isable it running on boot?
+(Empty line to quit)
+> E
+To enable WebREPL, you must set password for it
+New password (4-9 chars): secret
+Confirm password: secret
+Changes will be activated after reboot
+Would you like to reboot now? (y/n) y
+>>>
+```
