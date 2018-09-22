@@ -263,7 +263,54 @@ blue.on()
 - W trybie wejściowym stan pinu jest ustawiany przez urządzenie zewnętrzne.
 - Z poziomu programu odczytujemy stan pinu.
 
+## GPIO polling
+- Co określony interwał program sprawdza, czy stan uległ zmianie.
+- Jeśli zmiana nastąpiła to zostają wykonane odpowiednie akcje.
 
+```python
+    import machine
 
+    button = machine.Pin(BUTTON_PIN, machine.Pin.IN)
 
+    while True:
+        if not button.value():
+            print('Button pressed')
+            if pin:
+                pin.off()
+            pin = next(led_pin)
+            pin.on()
+```
 
+## Przerwania
+
+- Pojawienie _(ang. interrupt)_ się przerwania powoduje:
+    - Przerwanie wykonywanego programu.
+    - Skok do procedury obsługi przerwania.
+- Po obsłużeniu przerwania następuje powrót do wykonywanego programu.
+
+## Przerwania
+
+- Typy przerwań:
+    - Sprzętowe:
+        - Zewnętrzne
+        - Wewnętrzne
+    - Programowe
+
+## Przerwania
+
+- Procedura obsługi przerwania powinna być możliwie krótka.
+- Obsługa dużej ilości przerwań naraz ma wpływ na wydajność.
+
+## Obsługa przerwań w MicroPython
+
+```python
+led_pins = (red_pin, green_pin, blue_pin)
+
+button = Pin(BUTTON_PIN, Pin.IN)
+
+def toggle_led(pin):
+    pins_off(led_pins)
+    next(led_pin).on()
+
+    button.irq(trigger=Pin.IRQ_FALLING, handler=toggle_led)
+```
