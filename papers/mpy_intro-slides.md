@@ -379,4 +379,10 @@ import machine
 adc = machine.ADC(0)
 adc.read()
 ```
+# Uruchamianie programów przy starcie urządzenia
+
+## main.py
+- Plik `main.py` jest uruchamiany automatycznie przy starcie urządzenia.
+- Jego uruchomienie następuje **po** wykonaniu pliku `boot.py`.
+- Pętla główna programu powinna znajdować się w pliku `main.py`.
 
