@@ -170,6 +170,12 @@ station = network.WLAN(network.STA_IF)
 print(station.ifconfig())
 ```
 
+# boot.py
+
+## boot.py
+- Uruchamia się jako pierwszy przy starcie systemu.
+- Powinien zawierać niskopoziomowe komendy inicjalizujące pracę systemu.
+
 ## WebREPL
 - Pozwala na dostęp do REPL przez WiFi.
 - Daje możliwość pobierania i ładowania plików na urządzenie.
@@ -312,5 +318,65 @@ def toggle_led(pin):
     pins_off(led_pins)
     next(led_pin).on()
 
-    button.irq(trigger=Pin.IRQ_FALLING, handler=toggle_led)
+button.irq(trigger=Pin.IRQ_FALLING, handler=toggle_led)
 ```
+
+# PWM
+
+## PWM
+- PWM _(ang. Pulse Width Modulation)_.
+- Umożliwia smulację wjścia analogowego na cyfrowym pinie.
+- Pozwala uzyskać inne wartości niż 0 (stan niski) oraz 1 (stan wysoki).
+
+## PWM - konfiguracja
+- PWM jest sterowany dwiema wartościami:
+    - częstotliwość _(ang. frequency)_.
+    - Współczynnik wypełnienia impulsu _(ang. duty cycle)_.
+
+## PWM w MicroPython
+- MicroPython posiada obiekt `machine.PWM`.
+    - Przy tworzeniu jako argument przyjmuje utworzony wcześniej obiekt `Pin`
+- Metody `.freq()` i `.duty` pozwalają ustawić odpowiednio: częstotliwość oraz współczynnuk wypełnienia.
+- Częstotliwoć poawana jest w `Hz` i musi zawierać się w przedziale [1, 1000]
+- Współczynnik wypełnienia przyjmuje wartości od 0 (zawsze wyłączony) do 1023 (zawsze włączony.)
+- Do wyłączenia trybu PWM służy metoda `deinit`.
+
+## Sterowanie jasnością diody
+
+```python
+import machine
+import time
+
+BLUE_PIN = 13
+
+blue_led = machine.Pin(BLUE_PIN)
+pwm = machine.PWM(blue_led, freq=1000, duty=0)
+
+for x in range(1023):
+    pwm.duty(x)
+    time.sleep(.01)
+pwm.deinit()
+```
+
+# Odczyt wartości analogowych
+
+## ADC
+
+- ESP8266 zawiera jeden pin pozwalający na odczyt wartości analogowych.
+- Pin jest w stanie obsługiwać napięcia z przedziału od 0V do 1V.
+- Jeśli napięcia generowane przez podłączony układ nie mieszczą się w tym przedziale konieczne jest użycie dzielnika napięcia.
+
+## ADC
+
+- MicroPython posiada klasę `machine.ADC` do obsługi konwersji analogo-cyfrowej
+- Odczyt następuje przy użyciu metody `.read()`.
+- Zwracane są wartości z przedziału od 0 (0V) do 1024 (1V).
+
+## ADC - przykład
+```python
+import machine
+
+adc = machine.ADC(0)
+adc.read()
+```
+
