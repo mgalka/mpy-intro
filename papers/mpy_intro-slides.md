@@ -379,6 +379,29 @@ import machine
 adc = machine.ADC(0)
 adc.read()
 ```
+
+# Timer
+
+## Timer
+- Klasa `machine.Timer` odpowiada za obsługę timerów sprzętowych i programowych.
+- Zaimplementowane jest jedynie wywoływanie funkcji w określonych interwałach.
+- Konstruktor klasy wymaga podania identyfikatora timera.
+    - Użycie identyfikatora -1 oznacza użycie wirtualnego timera (nie sprzętowego).
+- Tryby pracy:
+    - `Timer.ONE_SHOT` - timer uruchamiany jest tylko raz.
+    - `Timer.PERIODIC` - timer jest uruchamiany co określony interwał aż do jego deinicjalizacji.
+- Dla ESP8266 interwał jest podawany w milisekundach.
+
+## Timer
+```python
+import machine
+
+t = machine.Timer(-1)
+
+t.init(mode=Timer.PERIODIC, period=1000, callback=lambda t: print('dd'))
+t.init(mode=Timer.ONE_SHOT, period=1000, callback=lambda t: print('dd'))
+```
+
 # Uruchamianie programów przy starcie urządzenia
 
 ## main.py
