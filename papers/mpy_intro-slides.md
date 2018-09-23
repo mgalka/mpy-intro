@@ -394,9 +394,9 @@ adc.read()
 
 ## Timer
 ```python
-import machine
+from machine import Timer
 
-t = machine.Timer(-1)
+t = Timer(-1)
 
 t.init(mode=Timer.PERIODIC, period=1000, callback=lambda t: print('dd'))
 t.init(mode=Timer.ONE_SHOT, period=1000, callback=lambda t: print('dd'))
