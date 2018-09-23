@@ -386,3 +386,119 @@ adc.read()
 - Jego uruchomienie następuje **po** wykonaniu pliku `boot.py`.
 - Pętla główna programu powinna znajdować się w pliku `main.py`.
 
+# I2C
+
+## IC2
+- Magistrala opracowana w latach 80 XX w. przez firmę Philips.
+- IC2 -> IIC (Inter-Integrated Circuit).
+- W warstwie fizycznej opiera się o 2 linie:
+    - SDL - linia zegara.
+    - SDA - linia danych.
+- IC2 jest magistralą typu master-slave.
+- Pierwotnie jej prędkość wynosiła 100kbps.
+
+## IC2
+- Komunikacja po I2C jest oparta o bajty (bity grupowane po 8).
+- Dane są wysyłane od najbardziej do najmniej znaczącego bitu.
+- Po każdym bajcie w kierunku przeciwnym przesyłany jest dodatkowy bajt potwierdzający.
+    - ACK - potwierdzenie.
+    - NACK - brak potwierdzenia.
+
+## I2C
+- Magistrala I2C wykorzystuje adresowanie urządzeń.
+- Pierwszym bajtem jest zawsze nadawany adres urządzenia slave oraz bit kierunku danych.
+- Początkowo wykorzystywała 7 bitów, później adres został rozszerzony do 10 bitów.
+- 10 bitowy adres zapisany na dwóch bajtach zawiera na początku z góry ustalone 5 bitów (11110).
+
+## I2C
+- W języku MicroPython komunikację poprzez I2C realizuje klasa `machine.I2C`.
+- W konstruktorze przyjmuje parametry definiujące piny realizujące funkcje linii SCL i SDA.
+- Procesor ESP8266 nie posiada sprzętowego kontrolera I2C.
+    - Transmisja jest realizowana przy oprogramowanie przy pomocy pinów GPIO.
+    - Taka implementacja jest często nazywana _bit banging_.
+
+## I2C
+
+```python
+from machine import Pin, I2C
+
+i2c = I2C(scl=Pin(5), sda=Pin(4), freq=100000)
+print(i2c.scan())
+```
+
+# Komunikacja z usługami Web
+ 
+## TCP/IP
+- Procesor ESP8266 zawiera moduł WiFi.
+    - Konfigurowany z poziomu MicroPythona przez moduł `network`.
+- Stos TCP/IP jest obsługiwany w MicroPythonie przy pomocy modułu `usocket`.
+- Daje możliwość transmisji sieciowej (w tym połączenie z Internetem).
+
+## Komunikacja HTTP
+- Implementacja komunikacji HTTP przy pomocy modułu `socket` jest możliwa ale czasochłonna.
+- Został stworzony zewnętrzny moduł `urequests`.
+    - Implementuje komunikację przy pomocy HTTP.
+    - Posiada API zbliżony do modułu `requests` z języka Python.
+    - Wymaga instalacji.
+
+## upip
+- Moduł `upip` umożliwia instalację pakietów języka MicroPython z PyPI.
+- Wymaga skonfigurowanego połączenia z Internetem.
+
+```python
+import upip
+
+upip.install('urequests')
+```
+
+## ujson
+- Format JSON jest powszechenie używany przez serwisy Web.
+- W języku MicroPython obsługę JSON implementuje moduł `ujson`.
+    - Posiada API zbliżony do modułu `json` z języka Python.
+
+## ujson
+
+```python
+import ujson
+
+data = {
+    'userId': 1,
+    'topic': 'Test post',
+    'body': 'Sample body'
+}
+
+data_str = ujson.dumps(data)
+ujson.dumps(data_str)
+```
+
+## urequests
+
+```python
+import urequests
+
+url = 'http://my.api.com/'
+
+resp = urequests.get(url)
+resp.text
+resp.content
+resp.json()
+```
+
+## urequests
+
+```python
+import urequests
+
+url = 'http://my.api.com/'
+
+data = {
+    'userId': 1,
+    'topic': 'Test post',
+    'body': 'Sample body'
+}
+
+resp = urequests.post(url, json=data)
+resp.text
+resp.content
+resp.json()
+```
