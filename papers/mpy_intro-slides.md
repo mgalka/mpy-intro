@@ -9,7 +9,7 @@ footer: Michał Gałka
 ## MicroPython
 
 - Implementacja języka Python 3.
-- Zawiera niewielki podzbiór funkcji bibilioteki standardowej.
+- Zawiera niewielki podzbiór funkcji biblioteki standardowej.
 - Zoptymalizowana do działania w środowiska o ograniczonych zasobach, takich jak mikrokontrolery.
 
 ## MicroPython
@@ -30,7 +30,7 @@ footer: Michał Gałka
         - Referencyjna płytka deweloperska.
 - Oficjalne porty:
     - `WiPy`
-        - plafoma sprzętowa oparta od ESP32 stworzona przez PyCom.
+        - platforma sprzętowa oparta od ESP32 stworzona przez PyCom.
     - `ESP8266` 
         - Niskobudżetowy mikroprocesor stworzony przez firmę Espressif Systems.
         - Używany w wielu modułach i zestawach deweloperskich.
@@ -74,9 +74,9 @@ footer: Michał Gałka
         - Dioda RGB.
         - Czujnik światła.
         - Przycisk.
-        - Regulator napięcia + port mcro USB do zasilania.
+        - Regulator napięcia + port micro USB do zasilania.
 - Płytka pomocnicza:
-    - Konwerter TTL -> USB (konsola szerwgowa)
+    - Konwerter TTL -> USB (konsola szeregowa)
     - Przyciski `flash` i `reset` 
 
 ## Witty Mini
@@ -95,7 +95,7 @@ footer: Michał Gałka
 
 ## Terminal szeregowy
 
-- Po podłączeniu kabla microUSB do płytki pomocniczej w systemie operacyjnym widoczny jest nowy port szeregowy.
+- Po podłączeniu kabla micro USB do płytki pomocniczej w systemie operacyjnym widoczny jest nowy port szeregowy.
 - należy się do niego podłączyć przy pomocy terminala szeregowego (PuTTY)
 
 ## Terminal - Windows
@@ -132,7 +132,7 @@ picocom -b 115200 /dev/tty.wchusbserial14150
 - REPL (Read Eval Print Loop)
     - Pracuje w trybie interaktywnym.
     - Przetwarza komendy języka.
-    - Wykonuje je po naciścięciu klawisza `Enter`.
+    - Wykonuje je po naciśnięciu klawisza `Enter`.
     - Wyświetla wyniki.
 
 ## ampy
@@ -337,7 +337,7 @@ button.irq(trigger=Pin.IRQ_FALLING, handler=toggle_led)
 - MicroPython posiada obiekt `machine.PWM`.
     - Przy tworzeniu jako argument przyjmuje utworzony wcześniej obiekt `Pin`
 - Metody `.freq()` i `.duty` pozwalają ustawić odpowiednio: częstotliwość oraz współczynnuk wypełnienia.
-- Częstotliwoć poawana jest w `Hz` i musi zawierać się w przedziale [1, 1000]
+- Częstotliwoć podawana jest w `Hz` i musi zawierać się w przedziale [1, 1000]
 - Współczynnik wypełnienia przyjmuje wartości od 0 (zawsze wyłączony) do 1023 (zawsze włączony.)
 - Do wyłączenia trybu PWM służy metoda `deinit`.
 
@@ -368,7 +368,7 @@ pwm.deinit()
 
 ## ADC
 
-- MicroPython posiada klasę `machine.ADC` do obsługi konwersji analogo-cyfrowej
+- MicroPython posiada klasę `machine.ADC` do obsługi konwersji analogowo-cyfrowej
 - Odczyt następuje przy użyciu metody `.read()`.
 - Zwracane są wartości z przedziału od 0 (0V) do 1024 (1V).
 
