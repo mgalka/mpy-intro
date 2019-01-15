@@ -125,7 +125,7 @@ Układ Winchip CH340 jest opdowiedzialny za konwersję TTL->USB, czyli odpowiada
 
 2. Pobierz archiwum `zip` ze sterownikiem ze strony:
 
-    https://blog.sengotta.net/signed-mac-os-driver-for-winchiphead-ch340-serial-bridge/
+ http://www.wch.cn/download/CH341SER_MAC_ZIP.html
 
 ![](img/installation-instructions/mac/01-ch340_drivers_download.png)
 
