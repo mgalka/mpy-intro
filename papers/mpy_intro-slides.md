@@ -325,7 +325,7 @@ button.irq(trigger=Pin.IRQ_FALLING, handler=toggle_led)
 
 ## PWM
 - PWM _(ang. Pulse Width Modulation)_.
-- Umożliwia smulację wjścia analogowego na cyfrowym pinie.
+- Umożliwia symulację wyjścia analogowego na cyfrowym pinie.
 - Pozwala uzyskać inne wartości niż 0 (stan niski) oraz 1 (stan wysoki).
 
 ## PWM - konfiguracja
@@ -336,8 +336,8 @@ button.irq(trigger=Pin.IRQ_FALLING, handler=toggle_led)
 ## PWM w MicroPython
 - MicroPython posiada obiekt `machine.PWM`.
     - Przy tworzeniu jako argument przyjmuje utworzony wcześniej obiekt `Pin`
-- Metody `.freq()` i `.duty` pozwalają ustawić odpowiednio: częstotliwość oraz współczynnuk wypełnienia.
-- Częstotliwoć podawana jest w `Hz` i musi zawierać się w przedziale [1, 1000]
+- Metody `.freq()` i `.duty` pozwalają ustawić odpowiednio: częstotliwość oraz współczynnik wypełnienia.
+- Częstotliwość podawana jest w `Hz` i musi zawierać się w przedziale [1, 1000]
 - Współczynnik wypełnienia przyjmuje wartości od 0 (zawsze wyłączony) do 1023 (zawsze włączony.)
 - Do wyłączenia trybu PWM służy metoda `deinit`.
 
@@ -475,7 +475,7 @@ upip.install('urequests')
 ```
 
 ## ujson
-- Format JSON jest powszechenie używany przez serwisy Web.
+- Format JSON jest powszechnie używany przez serwisy Web.
 - W języku MicroPython obsługę JSON implementuje moduł `ujson`.
     - Posiada API zbliżony do modułu `json` z języka Python.
 
