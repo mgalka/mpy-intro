@@ -398,8 +398,8 @@ from machine import Timer
 
 t = Timer(-1)
 
-t.init(mode=Timer.PERIODIC, period=1000, callback=lambda t: print('dd'))
-t.init(mode=Timer.ONE_SHOT, period=1000, callback=lambda t: print('dd'))
+t.init(mode=Timer.PERIODIC, period=1000, callback=lambda t: print('PERIODIC TIMER'))
+t.init(mode=Timer.ONE_SHOT, period=1000, callback=lambda t: print('ONE SHOT TIMER'))
 ```
 
 # Uruchamianie programów przy starcie urządzenia
