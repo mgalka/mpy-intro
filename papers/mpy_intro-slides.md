@@ -310,15 +310,26 @@ blue.on()
 ## Obsługa przerwań w MicroPython
 
 ```python
+...
 led_pins = (red_pin, green_pin, blue_pin)
+button = machine.Pin(BUTTON_PIN, machine.Pin.IN)
 
-button = Pin(BUTTON_PIN, Pin.IN)
+def pins_off(pins):
+    for pin in pins:
+        pin.off()
 
-def toggle_led(pin):
-    pins_off(led_pins)
-    next(led_pin).on()
-
-button.irq(trigger=Pin.IRQ_FALLING, handler=toggle_led)
+pins_off(led_pins)
+pin_idx = 0
+while True:
+    if not button.value():
+        print('Button pressed')
+        led_pins[pin_idx].off()
+        if pin_idx == len(led_pins) - 1:
+            pin_idx = 0
+        else:
+            pin_idx += 1
+        led_pins[pin_idx].on()
+    time.sleep(.2)
 ```
 
 # PWM
